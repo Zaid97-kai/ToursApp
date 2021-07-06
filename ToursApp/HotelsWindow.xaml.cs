@@ -29,7 +29,6 @@ namespace ToursApp
 
             RefreshHotels(); 
         }
-
         /// <summary>
         /// Обновление списка отелей при загрузке и пагинации
         /// </summary>
@@ -57,19 +56,31 @@ namespace ToursApp
                 return false;
             }
         }
-
+        /// <summary>
+        /// Открытие окна изменения информации об отеле
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnEditHotelInfo_Click(object sender, RoutedEventArgs e)
         {
             EditHotelInfoWindow editHotelInfoWindow = new EditHotelInfoWindow(sender, _context, this);
             editHotelInfoWindow.Show();
         }
-
+        /// <summary>
+        /// Переход на последнюю страницу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoLastPageButton_Click(object sender, RoutedEventArgs e)
         {
             _currentPage = _maxPage;
             RefreshHotels();
         }
-
+        /// <summary>
+        /// Переход на следующую страницу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoNextPageButton_Click(object sender, RoutedEventArgs e)
         {
             if(_currentPage + 1 > _maxPage)
@@ -79,7 +90,11 @@ namespace ToursApp
             _currentPage++;
             RefreshHotels();
         }
-
+        /// <summary>
+        /// Переход на предыдущую страницу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoPrevPageButton_Click(object sender, RoutedEventArgs e)
         {
             if(_currentPage - 1 < 1)
@@ -89,19 +104,31 @@ namespace ToursApp
             _currentPage--;
             RefreshHotels();
         }
-
+        /// <summary>
+        /// Переход на первую страницу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoFirstPageButton_Click(object sender, RoutedEventArgs e)
         {
             _currentPage = 1;
             RefreshHotels();
         }
-
+        /// <summary>
+        /// Переход на окно добавления отеля
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnAddHotel_Click(object sender, RoutedEventArgs e)
         {
             AddHotelWindow addHotelWindow = new AddHotelWindow(this);
             addHotelWindow.Show();
         }
-
+        /// <summary>
+        /// Ввод номера текущей страницы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TxtCurrentPageNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (_currentPage > 0 && _currentPage < _maxPage)

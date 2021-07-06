@@ -22,6 +22,12 @@ namespace ToursApp.Windows
         private ToursDB_08Entities _context;
         private Hotel _hotel = new Hotel();
         private HotelsWindow _hotelsWindow;
+        /// <summary>
+        /// Конструктор класса окна изменения/удаления информации об отеле
+        /// </summary>
+        /// <param name="o">Объект нажатой кнопки</param>
+        /// <param name="toursDB_08Entities">Контекст данных</param>
+        /// <param name="hotelsWindow">Окно со списком отелей</param>
         public EditHotelInfoWindow(object o, ToursDB_08Entities toursDB_08Entities, HotelsWindow hotelsWindow)
         {
             InitializeComponent();
@@ -36,7 +42,11 @@ namespace ToursApp.Windows
             TxtCountStars.Text = Convert.ToString(_hotel.CountOfStars);
             CmbNameCountry.SelectedItem = _hotel.Country;
         }
-
+        /// <summary>
+        /// Удаление отеля
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnDeleteHotel_Click(object sender, RoutedEventArgs e)
         {
             _context.Hotels.Remove(_hotel);
@@ -45,7 +55,11 @@ namespace ToursApp.Windows
             _hotelsWindow.DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();
             Hide();
         }
-
+        /// <summary>
+        /// Изменение информации об отеле
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnUpadateHotelInfo_Click(object sender, RoutedEventArgs e)
         {
             _hotel.Name = TxtNameHotel.Text;

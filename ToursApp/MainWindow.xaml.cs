@@ -35,11 +35,11 @@ namespace ToursApp
 
         public void RefreshTours()
         {
-            if (TxtFindedTourName.Text != "")
+            if (CmbTypes.SelectedItem != null)
             {
                 _tours = (from t in _tours
                           from tn in t.Types
-                          where tn.Name == _SelectedType
+                            where tn.Name == _SelectedType
                           select t).ToList();
             }
 
@@ -52,10 +52,10 @@ namespace ToursApp
             {
                 _tours = _tours.OrderBy(tour => tour.Name).Where(tour => tour.IsActual).ToList();
             }
-            else if(!(bool)ChbActual.IsChecked)
-            {
-                _tours = _tours.OrderBy(tour => tour.Name).Where(tour => tour.IsActual == false).ToList();
-            }
+            //else if(!(bool)ChbActual.IsChecked)
+            //{
+            //    _tours = _tours.OrderBy(tour => tour.Name).Where(tour => tour.IsActual == false).ToList();
+            //}
 
             ListTours.ItemsSource = _tours;
         }
@@ -70,10 +70,10 @@ namespace ToursApp
 
         private void CmbTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this._tours = _context.Tours.ToList();
+            _tours = _context.Tours.ToList();
 
             Type type = CmbTypes.SelectedItem as Type;
-            this._SelectedType = type.Name;
+            _SelectedType = type.Name;
             RefreshTours();
         }
 

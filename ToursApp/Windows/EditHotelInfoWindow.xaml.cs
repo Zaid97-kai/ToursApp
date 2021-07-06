@@ -52,8 +52,6 @@ namespace ToursApp.Windows
         {
             ConfirmWindow confirmWindow = new ConfirmWindow(_context, _hotel, _hotelsWindow, this);
             confirmWindow.Show();
-
-
         }
         /// <summary>
         /// Изменение информации об отеле

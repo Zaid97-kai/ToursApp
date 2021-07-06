@@ -52,6 +52,7 @@ namespace ToursApp.Windows
                 else
                 {
                     MessageBox.Show("Введено некорректное число (должно быть от 0 до 5!)");
+                    return;
                 }
 
                 _hotelsWindow.DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();

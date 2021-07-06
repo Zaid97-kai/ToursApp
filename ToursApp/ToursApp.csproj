@@ -95,6 +95,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelTours.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tour.cs">
       <DependentUpon>ModelTours.tt</DependentUpon>
     </Compile>
@@ -153,11 +158,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -165,8 +165,8 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EntityDeploy Include="ModelTours.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -199,7 +199,7 @@
     <Resource Include="Resources\picture.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Финский романтизм.jpg">
+    <Resource Include="Resources\Финский романтизм.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Финская крепость.jpg">
@@ -208,16 +208,16 @@
     <Resource Include="Resources\Урбанистическая Бразилия.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Страна идеальной гармонии.jpg">
+    <Resource Include="Resources\Страна идеальной гармонии.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Столица страны Утренней Свежести.jpg">
+    <Resource Include="Resources\Столица страны Утренней Свежести.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Старый город.jpg">
+    <Resource Include="Resources\Старый город.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Сердце Северной Карелии.jpg">
+    <Resource Include="Resources\Сердце Северной Карелии.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Сердце Ирана.jpg">
@@ -226,19 +226,19 @@
     <Resource Include="Resources\Свидание с Хельсинки.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Романтика белых ночей и разводных мостов.jpg">
+    <Resource Include="Resources\Романтика белых ночей и разводных мостов.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\По старому Таллину.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Незабываемый Дели.jpg">
+    <Resource Include="Resources\Незабываемый Дели.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Москва поэтическая.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Многоликий Сувон.jpg">
+    <Resource Include="Resources\Многоликий Сувон.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Из Алании к загадочным пещерам Алтынбешик.jpg">
@@ -259,7 +259,7 @@
     <Resource Include="Resources\Город с большими амбициями.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Волшебный Восток.jpg">
+    <Resource Include="Resources\Волшебный Восток.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Болгарское наследие.jpg">

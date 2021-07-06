@@ -33,20 +33,35 @@ namespace ToursApp.Windows
 
         private void BtnAddHotel_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Country i in _context.Countries)
+            if (TxtCountStars.Text != "" && TxtDescHotel.Text != "" && TxtNameHotel.Text != "" && CmbNameCountry.SelectedItem != null)
             {
-                if ((CmbNameCountry.SelectedItem as Country).Name == i.Name)
+                foreach (Country i in _context.Countries)
                 {
-                    _selectedCountryCode = i.Name;
-                    _selectedCountry = i;
+                    if ((CmbNameCountry.SelectedItem as Country).Name == i.Name)
+                    {
+                        _selectedCountryCode = i.Name;
+                        _selectedCountry = i;
+                    }
                 }
-            }
-            _context.Hotels.Add(new Hotel() { CountOfStars = Convert.ToInt32(TxtCountStars.Text), Name = TxtNameHotel.Text, CountryCode = _selectedCountryCode, Country = _selectedCountry, Description = TxtDescHotel.Text });
-            _context.SaveChanges();
 
-            _hotelsWindow.DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();
-            _hotelsWindow.RefreshHotels();
-            this.Hide();
+                if (Convert.ToInt32(TxtCountStars.Text) >= 0 && Convert.ToInt32(TxtCountStars.Text) <= 5)
+                {
+                    _context.Hotels.Add(new Hotel() { CountOfStars = Convert.ToInt32(TxtCountStars.Text), Name = TxtNameHotel.Text, CountryCode = _selectedCountryCode, Country = _selectedCountry, Description = TxtDescHotel.Text });
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Введено некорректное число (должно быть от 0 до 5!)");
+                }
+
+                _hotelsWindow.DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();
+                _hotelsWindow.RefreshHotels();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Не все поля формы заполнены!");
+            }
         }
     }
 }

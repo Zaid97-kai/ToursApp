@@ -30,12 +30,12 @@
                 <Label Content="Выберите тип:" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
             </UniformGrid>
             <UniformGrid Columns="1" Rows="3" Grid.Column="1">
-                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="25"></TextBox>
-                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="25"></ComboBox>
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="25" x:Name="TxtFindedTourName" TextChanged="TxtFindedTourName_TextChanged"></TextBox>
+                <ComboBox x:Name="CmbTypes" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="25" DisplayMemberPath="Name" SelectionChanged="CmbTypes_SelectionChanged"></ComboBox>
                 <CheckBox Content="только актуальные туры"></CheckBox>
             </UniformGrid>
         </Grid>
-        <Grid Grid.Row="1" Background="Cyan">
+        <Grid Grid.Row="1">
             <ListView x:Name="ListTours" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -47,14 +47,14 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border BorderThickness="1" BorderBrush="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Grid Width="400" Height="300">
+                            <Grid Width="400" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition Height="50*"></RowDefinition>
                                     <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition Height="Auto"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" Text="{Binding Name}" HorizontalAlignment="Center" FontSize="20" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+                                    <TextBlock Grid.Row="0" Text="{Binding Name}" HorizontalAlignment="Center" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                 <Image Grid.Row="1" Source="{Binding ImgPath, FallbackValue={StaticResource NullImage}}" HorizontalAlignment="Center"></Image>
                                 <TextBlock Grid.Row="2" Text="{Binding FullViewPrice}" HorizontalAlignment="Center" FontSize="20" FontStyle="Oblique"></TextBlock>
                                 <UniformGrid Grid.Row="3" Columns="2" Rows="1" HorizontalAlignment="Center">

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ToursApp"
+        xmlns:local="clr-namespace:ToursApp" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="ToursApp" Height="600" Width="1000" MinHeight="600" MinWidth="1000">
     <Window.Resources>
@@ -11,6 +11,9 @@
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>
         </Style>
+        <sys:String x:Key="NullImage">
+            pack://application:,,,/Resources/picture.png
+        </sys:String>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -33,31 +36,33 @@
             </UniformGrid>
         </Grid>
         <Grid Grid.Row="1" Background="Cyan">
-            <ListView x:Name="ListTours" HorizontalContentAlignment="Center">
+            <ListView x:Name="ListTours" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel>
-                            
+
                         </WrapPanel>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Width="300" Height="150">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="{Binding Name}" HorizontalAlignment="Center"></TextBlock>
-                            <Image Grid.Row="1" Source="{Binding ImagePreview}" HorizontalAlignment="Center"></Image>
-                            <TextBlock Grid.Row="2" Text="{Binding Price}" HorizontalAlignment="Center"></TextBlock>
-                            <UniformGrid Grid.Row="3" Columns="2" Rows="1" HorizontalAlignment="Center">
-                                <Label Content="{Binding State}" Background="{Binding solidColorBrush}" HorizontalAlignment="Center"></Label>
-                                <Label Content="{Binding TicketCount}" HorizontalAlignment="Center"></Label>
-                            </UniformGrid>
-                        </Grid>
+                        <Border BorderThickness="1" BorderBrush="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid Width="400" Height="300">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="50*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding Name}" HorizontalAlignment="Center" FontSize="20" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+                                <Image Grid.Row="1" Source="{Binding ImgPath, FallbackValue={StaticResource NullImage}}" HorizontalAlignment="Center"></Image>
+                                <TextBlock Grid.Row="2" Text="{Binding FullViewPrice}" HorizontalAlignment="Center" FontSize="20" FontStyle="Oblique"></TextBlock>
+                                <UniformGrid Grid.Row="3" Columns="2" Rows="1" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding State}" Background="{Binding solidColorBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3 3"></TextBlock>
+                                    <TextBlock Text="{Binding FullTicketCount}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                </UniformGrid>
+                            </Grid>
+                            </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

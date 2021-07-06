@@ -35,6 +35,13 @@ namespace ToursApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Type> Types { get; set; }
 
+        public string ImgPath
+        {
+            get
+            {
+                return "/Resources/" + this.ImagePreview;
+            }
+        }
         public string State
         {
             get
@@ -62,6 +69,22 @@ namespace ToursApp
                 {
                     return Brushes.Red;
                 }
+            }
+        }
+
+        public string FullViewPrice
+        {
+            get
+            {
+                return (int)this.Price + " рублей";
+            }
+        }
+
+        public string FullTicketCount
+        {
+            get
+            {
+                return "Количество билетов: " + this.TicketCount;
             }
         }
     }

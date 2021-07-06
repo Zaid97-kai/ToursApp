@@ -46,7 +46,7 @@ namespace ToursApp.Windows
                     _selectedCountry = i;
                 }
             }
-            _context.Hotels.Add(new Hotel() { CountOfStars = Convert.ToInt32(TxtCountStars.Text), Name = TxtNameHotel.Text, CountryCode = _selectedCountryCode, Country = _selectedCountry, Description = "Description" });
+            _context.Hotels.Add(new Hotel() { CountOfStars = Convert.ToInt32(TxtCountStars.Text), Name = TxtNameHotel.Text, CountryCode = _selectedCountryCode, Country = _selectedCountry, Description = TxtDescHotel.Text });
             _context.SaveChanges();
 
             _hotelsWindow.DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();

@@ -17,14 +17,17 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Content="Название отеля:" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
             <Label Grid.Row="1" Grid.Column="0" Content="Количество звезд:" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
             <Label Grid.Row="2" Grid.Column="0" Content="Название страны" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <Label Grid.Row="3" Grid.Column="0" Content="Описание отеля" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
             <TextBox Name="TxtNameHotel" Grid.Row="0" Grid.Column="1"/>
             <TextBox Name="TxtCountStars"  Grid.Row="1" Grid.Column="1"/>
             <ComboBox DisplayMemberPath="Name" x:Name="CmbNameCountry" Grid.Row="2" Grid.Column="1"></ComboBox>
-            <Button x:Name="BtnAddHotel" Content="Добавить" Click="BtnAddHotel_Click" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></Button>
+            <TextBox Name="TxtDescHotel"  Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True"/>
+            <Button x:Name="BtnAddHotel" Content="Добавить" Click="BtnAddHotel_Click" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"></Button>
         </Grid>
     </Grid>
 </Window>

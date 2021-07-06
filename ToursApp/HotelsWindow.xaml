@@ -41,7 +41,7 @@
             <StackPanel x:Name="PaginationPanel" Orientation="Horizontal" Margin="40 0 0 0">
                 <Button x:Name="GoFirstPageButton" Style="{StaticResource PaginationButton}" Content="&lt;&lt;" Click="GoFirstPageButton_Click" FontSize="20" Width="40" Height="40"></Button>
                 <Button x:Name="GoPrevPageButton" Style="{StaticResource PaginationButton}" Content="&lt;" Click="GoPrevPageButton_Click" FontSize="20" Width="40" Height="40"></Button>
-                <TextBox x:Name="TxtCurrentPageNumber" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+                <TextBox x:Name="TxtCurrentPageNumber" TextChanged="TxtCurrentPageNumber_TextChanged" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
                 <Label x:Name="LblTotalPages" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
                 <Button x:Name="GoNextPageButton" Style="{StaticResource PaginationButton}" Content="&gt;" Click="GoNextPageButton_Click" FontSize="20" Width="40" Height="40"></Button>
                 <Button x:Name="GoLastPageButton" Style="{StaticResource PaginationButton}" Content="&gt;&gt;" Click="GoLastPageButton_Click" FontSize="20" Width="40" Height="40"></Button>

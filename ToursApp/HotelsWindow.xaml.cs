@@ -101,5 +101,14 @@ namespace ToursApp
             AddHotelWindow addHotelWindow = new AddHotelWindow(this);
             addHotelWindow.Show();
         }
+
+        private void TxtCurrentPageNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_currentPage > 0 && _currentPage < _maxPage)
+            {
+                _currentPage = Convert.ToInt32(TxtCurrentPageNumber.Text);
+                RefreshHotels();
+            }
+        }
     }
 }

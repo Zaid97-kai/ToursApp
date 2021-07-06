@@ -35,5 +35,13 @@ namespace ToursApp
         public virtual ICollection<HotelImage> HotelImages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tour> Tours { get; set; }
+
+        public int NumberOfToursAvailable
+        {
+            get
+            {
+                return this.Country.Hotels.Count;
+            }
+        }
     }
 }

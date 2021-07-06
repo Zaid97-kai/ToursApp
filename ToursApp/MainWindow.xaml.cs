@@ -27,7 +27,7 @@ namespace ToursApp
         public MainWindow()
         {
             InitializeComponent();
-            ListTours.ItemsSource = _context.Tours.ToList();
+            ListTours.ItemsSource = _context.Tours.OrderBy(tour => tour.Name).ToList();
             CmbTypes.ItemsSource = _context.Types.OrderBy(types => types.Name).ToList();
 
             this._tours = _context.Tours.ToList();
@@ -45,16 +45,16 @@ namespace ToursApp
 
             if (TxtFindedTourName.Text != "")
             {
-                _tours = _tours.Where(tour => tour.Name == _FindedName).ToList();
+                _tours = _tours.OrderBy(tour => tour.Name).Where(tour => tour.Name == _FindedName).ToList();
             }
 
             if ((bool)ChbActual.IsChecked)
             {
-                _tours = _tours.Where(tour => tour.IsActual).ToList();
+                _tours = _tours.OrderBy(tour => tour.Name).Where(tour => tour.IsActual).ToList();
             }
             else if(!(bool)ChbActual.IsChecked)
             {
-                _tours = _tours.Where(tour => tour.IsActual == false).ToList();
+                _tours = _tours.OrderBy(tour => tour.Name).Where(tour => tour.IsActual == false).ToList();
             }
 
             ListTours.ItemsSource = _tours;
@@ -62,7 +62,7 @@ namespace ToursApp
 
         private void TxtFindedTourName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this._tours = _context.Tours.ToList();
+            this._tours = _context.Tours.OrderBy(tour => tour.Name).ToList();
 
             this._FindedName = TxtFindedTourName.Text;
             RefreshTours();
@@ -84,13 +84,21 @@ namespace ToursApp
 
         private void CheckedStatusController()
         {
-            this._tours = _context.Tours.ToList();
+            this._tours = _context.Tours.OrderBy(tour => tour.Name).ToList();
             RefreshTours();
         }
 
         private void ChbActual_Unchecked(object sender, RoutedEventArgs e)
         {
             CheckedStatusController();
+        }
+
+        private void BtnListHotelsView_Click(object sender, RoutedEventArgs e)
+        {
+            HotelsWindow hotelsWindow = new HotelsWindow();
+
+            //hotelsWindow.Owner = this;
+            hotelsWindow.Show();
         }
     }
 }

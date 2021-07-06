@@ -46,7 +46,7 @@ namespace ToursApp
         {
             get
             {
-                if(IsActual)
+                if (IsActual)
                 {
                     return "Актуален";
                 }

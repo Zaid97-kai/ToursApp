@@ -20,9 +20,11 @@ namespace ToursApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ToursDB_08Entities _context = new ToursDB_08Entities();
         public MainWindow()
         {
             InitializeComponent();
+            ListTours.ItemsSource = _context.Tours.ToList();
         }
     }
 }

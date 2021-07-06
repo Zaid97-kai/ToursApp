@@ -11,7 +11,8 @@ namespace ToursApp
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows.Media;
+
     public partial class Tour
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -33,5 +34,35 @@ namespace ToursApp
         public virtual ICollection<Hotel> Hotels { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Type> Types { get; set; }
+
+        public string State
+        {
+            get
+            {
+                if(IsActual)
+                {
+                    return "Актуален";
+                }
+                else
+                {
+                    return "Не актуален";
+                }
+            }
+        }
+
+        public SolidColorBrush solidColorBrush
+        {
+            get
+            {
+                if (IsActual)
+                {
+                    return Brushes.Green;
+                }
+                else
+                {
+                    return Brushes.Red;
+                }
+            }
+        }
     }
 }

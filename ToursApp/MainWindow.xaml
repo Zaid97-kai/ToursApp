@@ -33,7 +33,7 @@
             </UniformGrid>
         </Grid>
         <Grid Grid.Row="1" Background="Cyan">
-            <ListView>
+            <ListView x:Name="ListTours" HorizontalContentAlignment="Center">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel>
@@ -41,23 +41,25 @@
                         </WrapPanel>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
-                <DataTemplate>
-                    <Grid Width="100" Height="150">
-                        <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Content="Наименование тура"></Label>
-                        <Image Grid.Row="1"></Image>
-                        <Label Grid.Row="2"></Label>
-                        <UniformGrid Grid.Row="3" Columns="2" Rows="1">
-                            <Label Content="Состояние"></Label>
-                            <Label Content="Количество билетов"></Label>
-                        </UniformGrid>
-                    </Grid>
-                </DataTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="300" Height="150">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="{Binding Name}" HorizontalAlignment="Center"></TextBlock>
+                            <Image Grid.Row="1" Source="{Binding ImagePreview}" HorizontalAlignment="Center"></Image>
+                            <TextBlock Grid.Row="2" Text="{Binding Price}" HorizontalAlignment="Center"></TextBlock>
+                            <UniformGrid Grid.Row="3" Columns="2" Rows="1" HorizontalAlignment="Center">
+                                <Label Content="{Binding State}" Background="{Binding solidColorBrush}" HorizontalAlignment="Center"></Label>
+                                <Label Content="{Binding TicketCount}" HorizontalAlignment="Center"></Label>
+                            </UniformGrid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </Grid>
 

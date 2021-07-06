@@ -6,10 +6,21 @@
         xmlns:local="clr-namespace:ToursApp"
         mc:Ignorable="d"
         Title="HotelsWindow" Height="600" Width="1000">
+    <Window.Resources>
+        <!--Стиль для кнопок из блока пагинации-->
+        <Style TargetType="Button" x:Key="PaginationButton">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#FF6995C2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Height" Value="20"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="3.0*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <DataGrid Grid.Row="0" x:Name="DataGridHotels" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
             <DataGrid.Columns>
@@ -26,5 +37,19 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel x:Name="PaginationPanel" Orientation="Horizontal" Margin="40 0 0 0">
+                <Button x:Name="GoFirstPageButton" Style="{StaticResource PaginationButton}" Content="&lt;&lt;" Click="GoFirstPageButton_Click"></Button>
+                <Button x:Name="GoPrevPageButton" Style="{StaticResource PaginationButton}" Content="&lt;" Click="GoPrevPageButton_Click"></Button>
+                <TextBox x:Name="TxtCurrentPageNumber" Width="50" Height="20"></TextBox>
+                <Label x:Name="LblTotalPages" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center">of 6</Label>
+                <Button x:Name="GoNextPageButton" Style="{StaticResource PaginationButton}" Content="&gt;" Click="GoNextPageButton_Click"></Button>
+                <Button x:Name="GoLastPageButton" Style="{StaticResource PaginationButton}" Content="&gt;&gt;" Click="GoLastPageButton_Click"></Button>
+                <Label x:Name="LblPlayersInfo"></Label>
+            </StackPanel>
+            <TextBlock Text="Количество записей: "></TextBlock>
+            <TextBlock Text="Количество записей в текущей странице: "></TextBlock>
+            <Button x:Name="BtnAddHotel" Content="Добавить отель" Click="BtnAddHotel_Click"/>
+        </WrapPanel>
     </Grid>
 </Window>

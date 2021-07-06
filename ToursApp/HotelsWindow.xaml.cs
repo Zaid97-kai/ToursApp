@@ -33,5 +33,31 @@ namespace ToursApp
             EditHotelInfoWindow editHotelInfoWindow = new EditHotelInfoWindow(sender, _context, this);
             editHotelInfoWindow.Show();
         }
+
+        private void GoLastPageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GoNextPageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GoPrevPageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GoFirstPageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnAddHotel_Click(object sender, RoutedEventArgs e)
+        {
+            AddHotelWindow addHotelWindow = new AddHotelWindow(this);
+            addHotelWindow.Show();
+        }
     }
 }

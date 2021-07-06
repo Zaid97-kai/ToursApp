@@ -39,7 +39,11 @@ namespace ToursApp.Windows
 
         private void BtnDeleteHotel_Click(object sender, RoutedEventArgs e)
         {
+            _context.Hotels.Remove(_hotel);
+            _context.SaveChanges();
 
+            _hotelsWindow.DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();
+            Hide();
         }
 
         private void BtnUpadateHotelInfo_Click(object sender, RoutedEventArgs e)

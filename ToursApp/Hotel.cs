@@ -11,6 +11,7 @@ namespace ToursApp
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     
     public partial class Hotel
     {
@@ -36,11 +37,14 @@ namespace ToursApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tour> Tours { get; set; }
 
+        /// <summary>
+        /// Определение количества доступных актуальных туров
+        /// </summary>
         public int NumberOfToursAvailable
         {
             get
             {
-                return this.Country.Hotels.Count;
+                return this.Tours.Where(x=>x.IsActual).Count();
             }
         }
     }

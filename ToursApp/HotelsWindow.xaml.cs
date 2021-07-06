@@ -27,8 +27,35 @@ namespace ToursApp
         {
             InitializeComponent();
 
-            DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();
+            RefreshHotels(); 
+        }
 
+        /// <summary>
+        /// Обновление списка отелей при загрузке и пагинации
+        /// </summary>
+        /// <returns></returns>
+        private bool RefreshHotels()
+        {
+            try
+            {
+                DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();
+                _maxPage = Convert.ToInt32(Math.Ceiling(_context.Hotels.ToList().Count * 1.0 / 10));
+                var listHotels = _context.Hotels.ToList().Skip((_currentPage - 1) * 10).Take(10).ToList();
+
+                LblTotalPages.Content = "of " + _maxPage.ToString();
+                TxtCurrentPageNumber.Text = _currentPage.ToString();
+
+                DataGridHotels.ItemsSource = listHotels;
+
+                TxtCountRecords.Text = "Количество записей: " + _context.Hotels.ToList().Count.ToString() + " ";
+                TxtCountRecordsInCurrentPage.Text = "Количество записей в текущей странице: " + listHotels.Count.ToString() + " ";
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void BtnEditHotelInfo_Click(object sender, RoutedEventArgs e)
@@ -39,22 +66,34 @@ namespace ToursApp
 
         private void GoLastPageButton_Click(object sender, RoutedEventArgs e)
         {
-            _currentPage = 1;
+            _currentPage = _maxPage;
+            RefreshHotels();
         }
 
         private void GoNextPageButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if(_currentPage + 1 > _maxPage)
+            {
+                return;
+            }
+            _currentPage++;
+            RefreshHotels();
         }
 
         private void GoPrevPageButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if(_currentPage - 1 < 1)
+            { 
+                return;
+            }
+            _currentPage--;
+            RefreshHotels();
         }
 
         private void GoFirstPageButton_Click(object sender, RoutedEventArgs e)
         {
-
+            _currentPage = 1;
+            RefreshHotels();
         }
 
         private void BtnAddHotel_Click(object sender, RoutedEventArgs e)

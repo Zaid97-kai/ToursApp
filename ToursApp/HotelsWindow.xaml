@@ -39,16 +39,16 @@
         </DataGrid>
         <WrapPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel x:Name="PaginationPanel" Orientation="Horizontal" Margin="40 0 0 0">
-                <Button x:Name="GoFirstPageButton" Style="{StaticResource PaginationButton}" Content="&lt;&lt;" Click="GoFirstPageButton_Click"></Button>
-                <Button x:Name="GoPrevPageButton" Style="{StaticResource PaginationButton}" Content="&lt;" Click="GoPrevPageButton_Click"></Button>
-                <TextBox x:Name="TxtCurrentPageNumber" Width="50" Height="20"></TextBox>
-                <Label x:Name="LblTotalPages" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center">of 6</Label>
-                <Button x:Name="GoNextPageButton" Style="{StaticResource PaginationButton}" Content="&gt;" Click="GoNextPageButton_Click"></Button>
-                <Button x:Name="GoLastPageButton" Style="{StaticResource PaginationButton}" Content="&gt;&gt;" Click="GoLastPageButton_Click"></Button>
+                <Button x:Name="GoFirstPageButton" Style="{StaticResource PaginationButton}" Content="&lt;&lt;" Click="GoFirstPageButton_Click" FontSize="20" Width="40" Height="40"></Button>
+                <Button x:Name="GoPrevPageButton" Style="{StaticResource PaginationButton}" Content="&lt;" Click="GoPrevPageButton_Click" FontSize="20" Width="40" Height="40"></Button>
+                <TextBox x:Name="TxtCurrentPageNumber" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+                <Label x:Name="LblTotalPages" FontSize="10" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+                <Button x:Name="GoNextPageButton" Style="{StaticResource PaginationButton}" Content="&gt;" Click="GoNextPageButton_Click" FontSize="20" Width="40" Height="40"></Button>
+                <Button x:Name="GoLastPageButton" Style="{StaticResource PaginationButton}" Content="&gt;&gt;" Click="GoLastPageButton_Click" FontSize="20" Width="40" Height="40"></Button>
                 <Label x:Name="LblPlayersInfo"></Label>
             </StackPanel>
-            <TextBlock Text="Количество записей: "></TextBlock>
-            <TextBlock Text="Количество записей в текущей странице: "></TextBlock>
+            <TextBlock x:Name="TxtCountRecords" Text="Количество записей: " VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock x:Name="TxtCountRecordsInCurrentPage" Text="Количество записей в текущей странице: " VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
             <Button x:Name="BtnAddHotel" Content="Добавить отель" Click="BtnAddHotel_Click"/>
         </WrapPanel>
     </Grid>

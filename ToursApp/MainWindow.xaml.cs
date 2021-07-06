@@ -35,17 +35,37 @@ namespace ToursApp
 
         public void RefreshTours()
         {
-            _tours = (from t in _tours
-                     from tn in t.Types
-                     where tn.Name == _SelectedType
-                     select t).ToList();
+            if (TxtFindedTourName.Text != "")
+            {
+                _tours = (from t in _tours
+                          from tn in t.Types
+                          where tn.Name == _SelectedType
+                          select t).ToList();
+            }
+
+            if (TxtFindedTourName.Text != "")
+            {
+                _tours = _tours.Where(tour => tour.Name == _FindedName).ToList();
+            }
+
+            if ((bool)ChbActual.IsChecked)
+            {
+                _tours = _tours.Where(tour => tour.IsActual).ToList();
+            }
+            else if(!(bool)ChbActual.IsChecked)
+            {
+                _tours = _tours.Where(tour => tour.IsActual == false).ToList();
+            }
 
             ListTours.ItemsSource = _tours;
         }
 
         private void TxtFindedTourName_TextChanged(object sender, TextChangedEventArgs e)
         {
+            this._tours = _context.Tours.ToList();
+
             this._FindedName = TxtFindedTourName.Text;
+            RefreshTours();
         }
 
         private void CmbTypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -55,6 +75,22 @@ namespace ToursApp
             Type type = CmbTypes.SelectedItem as Type;
             this._SelectedType = type.Name;
             RefreshTours();
+        }
+
+        private void ChbActual_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckedStatusController();
+        }
+
+        private void CheckedStatusController()
+        {
+            this._tours = _context.Tours.ToList();
+            RefreshTours();
+        }
+
+        private void ChbActual_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckedStatusController();
         }
     }
 }

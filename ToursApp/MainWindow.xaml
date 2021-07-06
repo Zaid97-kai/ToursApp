@@ -32,7 +32,7 @@
             <UniformGrid Columns="1" Rows="3" Grid.Column="1">
                 <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="25" x:Name="TxtFindedTourName" TextChanged="TxtFindedTourName_TextChanged"></TextBox>
                 <ComboBox x:Name="CmbTypes" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="25" DisplayMemberPath="Name" SelectionChanged="CmbTypes_SelectionChanged"></ComboBox>
-                <CheckBox Content="только актуальные туры"></CheckBox>
+                <CheckBox x:Name="ChbActual" Content="только актуальные туры" Checked="ChbActual_Checked" VerticalAlignment="Center" Unchecked="ChbActual_Unchecked"></CheckBox>
             </UniformGrid>
         </Grid>
         <Grid Grid.Row="1">

@@ -52,6 +52,12 @@ namespace ToursApp.Windows
         {
             ConfirmWindow confirmWindow = new ConfirmWindow(_context, _hotel, _hotelsWindow, this);
             confirmWindow.Show();
+
+            var result= MessageBox.Show(_hotel.Name, "Хотите удалить отель?", MessageBoxButton.YesNoCancel);
+            if (result==MessageBoxResult.Yes)
+            {
+
+            }
         }
         /// <summary>
         /// Изменение информации об отеле

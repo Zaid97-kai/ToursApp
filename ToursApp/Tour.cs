@@ -21,7 +21,7 @@ namespace ToursApp
             this.Hotels = new HashSet<Hotel>();
             this.Types = new HashSet<Type>();
         }
-    
+
         public int Id { get; set; }
         public int TicketCount { get; set; }
         public string Name { get; set; }
@@ -30,64 +30,9 @@ namespace ToursApp
         public decimal Price { get; set; }
         public bool IsActual { get; set; }
 
-        public int HotelsCount => Hotels.Count;
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hotel> Hotels { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Type> Types { get; set; }
-
-        public string ImgPath
-        {
-            get
-            {
-                return "/Resources/" + this.ImagePreview;
-            }
-        }
-        public string State
-        {
-            get
-            {
-                if (IsActual)
-                {
-                    return "Актуален";
-                }
-                else
-                {
-                    return "Не актуален";
-                }
-            }
-        }
-
-        public SolidColorBrush solidColorBrush
-        {
-            get
-            {
-                if (IsActual)
-                {
-                    return Brushes.Green;
-                }
-                else
-                {
-                    return Brushes.Red;
-                }
-            }
-        }
-
-        public string FullViewPrice
-        {
-            get
-            {
-                return (int)this.Price + " рублей";
-            }
-        }
-
-        public string FullTicketCount
-        {
-            get
-            {
-                return "Количество билетов: " + this.TicketCount;
-            }
-        }
     }
 }

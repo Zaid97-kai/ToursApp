@@ -45,7 +45,8 @@ namespace ToursApp
 
             if (TxtFindedTourName.Text != "")
             {
-                _tours = _tours.OrderBy(tour => tour.Name).Where(tour => tour.Name == _FindedName).ToList();
+                //_tours = _tours.OrderBy(tour => tour.Name).Where(tour => tour.Name == _FindedName).ToList();
+                _tours = _tours.OrderBy(tour => tour.Name).Where(t => t.Name.ToLower().Contains(TxtFindedTourName.Text)).ToList();
             }
 
             if ((bool)ChbActual.IsChecked)

@@ -21,11 +21,14 @@ namespace ToursApp
     public partial class HotelsWindow : Window
     {
         private ToursDB_08Entities _context = new ToursDB_08Entities();
+        private int _currentPage = 1;
+        private int _maxPage = 0;
         public HotelsWindow()
         {
             InitializeComponent();
 
             DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();
+
         }
 
         private void BtnEditHotelInfo_Click(object sender, RoutedEventArgs e)
@@ -36,7 +39,7 @@ namespace ToursApp
 
         private void GoLastPageButton_Click(object sender, RoutedEventArgs e)
         {
-
+            _currentPage = 1;
         }
 
         private void GoNextPageButton_Click(object sender, RoutedEventArgs e)

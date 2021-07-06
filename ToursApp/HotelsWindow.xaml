@@ -22,7 +22,7 @@
             <RowDefinition Height="3.0*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" x:Name="DataGridHotels" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
+        <DataGrid Grid.Row="0" x:Name="DataGridHotels" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Название отеля" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Количество звезд" Binding="{Binding CountOfStars}"></DataGridTextColumn>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Services.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,11 +50,10 @@ namespace ToursApp.Windows
         /// <param name="e"></param>
         private void BtnDeleteHotel_Click(object sender, RoutedEventArgs e)
         {
-            _context.Hotels.Remove(_hotel);
-            _context.SaveChanges();
+            ConfirmWindow confirmWindow = new ConfirmWindow(_context, _hotel, _hotelsWindow);
+            confirmWindow.Show();
 
-            _hotelsWindow.DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();
-            Hide();
+            
         }
         /// <summary>
         /// Изменение информации об отеле

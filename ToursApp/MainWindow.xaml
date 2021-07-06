@@ -11,6 +11,10 @@
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>
         </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
         <sys:String x:Key="NullImage">
             pack://application:,,,/Resources/picture.png
         </sys:String>
@@ -22,18 +26,20 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="15*"></ColumnDefinition>
-                <ColumnDefinition Width="16*"></ColumnDefinition>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="40*"></ColumnDefinition>
+                <ColumnDefinition Width="60*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <UniformGrid Columns="1" Rows="4" Grid.Column="0">
+            <Image Grid.Column="0" Source="/Resources/logo.png" Width="150" Height="150" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <UniformGrid Columns="1" Rows="4" Grid.Column="1">
                 <Label Content="Введите текст для поиска:" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
                 <Label Content="Выберите тип:" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
             </UniformGrid>
-            <UniformGrid Columns="1" Rows="4" Grid.Column="1">
+            <UniformGrid Columns="1" Rows="4" Grid.Column="2">
                 <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="25" x:Name="TxtFindedTourName" TextChanged="TxtFindedTourName_TextChanged"></TextBox>
                 <ComboBox x:Name="CmbTypes" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="25" DisplayMemberPath="Name" SelectionChanged="CmbTypes_SelectionChanged"></ComboBox>
                 <CheckBox x:Name="ChbActual" Content="только актуальные туры" Checked="ChbActual_Checked" VerticalAlignment="Center" Unchecked="ChbActual_Unchecked"></CheckBox>
-                <Button x:Name="BtnListHotelsView" Grid.Column="1" Content="Список отелей" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Click="BtnListHotelsView_Click"></Button>
+                <Button x:Name="BtnListHotelsView" Content="Список отелей" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Click="BtnListHotelsView_Click"></Button>
             </UniformGrid>
         </Grid>
         <Grid Grid.Row="1">
@@ -59,7 +65,7 @@
                                 <Image Grid.Row="1" Source="{Binding ImgPath, FallbackValue={StaticResource NullImage}}" HorizontalAlignment="Center"></Image>
                                 <TextBlock Grid.Row="2" Text="{Binding FullViewPrice}" HorizontalAlignment="Center" FontSize="20" FontStyle="Oblique"></TextBlock>
                                 <UniformGrid Grid.Row="3" Columns="2" Rows="1" HorizontalAlignment="Center">
-                                    <TextBlock Text="{Binding State}" Background="{Binding solidColorBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3 3"></TextBlock>
+                                    <TextBlock Text="{Binding State}" Foreground="{Binding solidColorBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3 3"></TextBlock>
                                     <TextBlock Text="{Binding FullTicketCount}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
                                 </UniformGrid>
                             </Grid>

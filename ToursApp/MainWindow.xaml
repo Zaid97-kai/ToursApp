@@ -5,8 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToursApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ToursApp" Height="600" Width="1000" MinHeight="600" MinWidth="1000">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="450*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"></ColumnDefinition>
+                <ColumnDefinition Width="16*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <UniformGrid Columns="1" Rows="3" Grid.Column="0">
+                <Label Content="Введите текст для поиска:" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+                <Label Content="Выберите тип:" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            </UniformGrid>
+            <UniformGrid Columns="1" Rows="3" Grid.Column="1">
+                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="25"></TextBox>
+                <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="25"></ComboBox>
+                <CheckBox Content="только актуальные туры"></CheckBox>
+            </UniformGrid>
+        </Grid>
+        <Grid Grid.Row="1" Background="Cyan">
+            <ListView>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel>
+                            
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <DataTemplate>
+                    <Grid Width="100" Height="150">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Наименование тура"></Label>
+                        <Image Grid.Row="1"></Image>
+                        <Label Grid.Row="2"></Label>
+                        <UniformGrid Grid.Row="3" Columns="2" Rows="1">
+                            <Label Content="Состояние"></Label>
+                            <Label Content="Количество билетов"></Label>
+                        </UniformGrid>
+                    </Grid>
+                </DataTemplate>
+            </ListView>
+        </Grid>
+
     </Grid>
 </Window>

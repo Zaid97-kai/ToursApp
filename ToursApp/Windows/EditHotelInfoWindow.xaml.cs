@@ -50,10 +50,10 @@ namespace ToursApp.Windows
         /// <param name="e"></param>
         private void BtnDeleteHotel_Click(object sender, RoutedEventArgs e)
         {
-            ConfirmWindow confirmWindow = new ConfirmWindow(_context, _hotel, _hotelsWindow);
+            ConfirmWindow confirmWindow = new ConfirmWindow(_context, _hotel, _hotelsWindow, this);
             confirmWindow.Show();
 
-            
+
         }
         /// <summary>
         /// Изменение информации об отеле

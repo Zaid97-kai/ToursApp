@@ -33,7 +33,7 @@ namespace ToursApp
         /// Обновление списка отелей при загрузке и пагинации
         /// </summary>
         /// <returns></returns>
-        private bool RefreshHotels()
+        public bool RefreshHotels()
         {
             try
             {

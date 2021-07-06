@@ -31,11 +31,6 @@ namespace ToursApp.Windows
             _hotelsWindow = hotelsWindow;
         }
 
-        private void BtnDeleteHotel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void BtnAddHotel_Click(object sender, RoutedEventArgs e)
         {
             foreach (Country i in _context.Countries)
@@ -50,6 +45,7 @@ namespace ToursApp.Windows
             _context.SaveChanges();
 
             _hotelsWindow.DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();
+            _hotelsWindow.RefreshHotels();
             this.Hide();
         }
     }

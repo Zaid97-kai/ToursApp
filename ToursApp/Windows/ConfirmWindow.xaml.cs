@@ -20,14 +20,16 @@ namespace ToursApp.Windows
     public partial class ConfirmWindow : Window
     {
         private ToursDB_08Entities _context;
+        private EditHotelInfoWindow _editHotelInfoWindow;
         private Hotel _hotel;
         private HotelsWindow _hotelsWindow;
-        public ConfirmWindow(ToursDB_08Entities toursDB_08Entities, Hotel hotel, HotelsWindow hotelsWindow)
+        public ConfirmWindow(ToursDB_08Entities toursDB_08Entities, Hotel hotel, HotelsWindow hotelsWindow, EditHotelInfoWindow editHotelInfoWindow)
         {
             InitializeComponent();
             _context = toursDB_08Entities;
             _hotel = hotel;
             _hotelsWindow = hotelsWindow;
+            _editHotelInfoWindow = editHotelInfoWindow;
 
             TxtConfirmMsg.Text = "Вы уверены, что хотите удалить отель " + _hotel.Name + "?";
         }
@@ -38,7 +40,9 @@ namespace ToursApp.Windows
             _context.SaveChanges();
 
             _hotelsWindow.DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();
-            Hide();
+            _hotelsWindow.RefreshHotels();
+            _editHotelInfoWindow.Hide();
+            this.Hide();
         }
 
         private void BtnReject_Click(object sender, RoutedEventArgs e)

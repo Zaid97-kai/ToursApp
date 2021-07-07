@@ -30,7 +30,11 @@ namespace ToursApp.Windows
             CmbNameCountry.ItemsSource = _context.Countries.ToList();
             _hotelsWindow = hotelsWindow;
         }
-
+        /// <summary>
+        /// Кнопка добавления отеля
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnAddHotel_Click(object sender, RoutedEventArgs e)
         {
             if (TxtCountStars.Text != "" && TxtDescHotel.Text != "" && TxtNameHotel.Text != "" && CmbNameCountry.SelectedItem != null)

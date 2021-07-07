@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToursApp.Windows"
         mc:Ignorable="d"
-        Title="ConfirmWindow" Height="150" Width="300" MinHeight="150" MinWidth="300" MaxHeight="150" MaxWidth="300">
+        Title="Подтверждение удаления" Height="150" Width="300" MinHeight="150" MinWidth="300" MaxHeight="150" MaxWidth="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>

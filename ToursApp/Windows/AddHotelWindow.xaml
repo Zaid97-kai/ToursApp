@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToursApp.Windows"
         mc:Ignorable="d"
-        Title="AddHotelWindow" Height="250" Width="300" MinHeight="250" MinWidth="300">
+        Title="Добавление отеля" Height="250" Width="300" MinHeight="250" MinWidth="300">
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>

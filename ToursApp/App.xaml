@@ -8,6 +8,10 @@
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>
         </Style>
+        <Style TargetType="Control" x:Key="BigButton">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="FontSize" Value="40"></Setter>
+        </Style>
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
             <Setter Property="FontSize" Value="14"></Setter>

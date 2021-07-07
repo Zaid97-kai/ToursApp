@@ -25,6 +25,11 @@ namespace ToursApp.Windows
         private Hotel _hotel;
         private HotelsWindow _hotelsWindow;
         private byte[] imageHotel;
+
+        List<HotelImage> hotelImages;
+        int _currentPage = 1;
+        int _maxImages = 0;
+
         /// <summary>
         /// Конструктор класса окна изменения/удаления информации об отеле
         /// </summary>
@@ -34,14 +39,17 @@ namespace ToursApp.Windows
         public EditHotelInfoWindow(object o, ToursDB_08Entities toursDB_08Entities, HotelsWindow hotelsWindow)
         {
             InitializeComponent();
+            _hotel = (o as Button).DataContext as Hotel;
+            DataContext = _hotel.HotelImages;
+
+            _maxImages = _hotel.HotelImages.ToList().Count;
+            this.hotelImages = _hotel.HotelImages.ToList();
 
             _context = toursDB_08Entities;
             _hotelsWindow = hotelsWindow;
 
             CmbNameCountry.ItemsSource = _context.Countries.ToList();
-            _hotel = (o as Button).DataContext as Hotel;
 
-            DataContext = _hotel;
             InsertHotelInfo();
         }
 
@@ -119,6 +127,24 @@ namespace ToursApp.Windows
             {
                 MessageBox.Show("Возникла ошибка");
             }
+        }
+
+        private void PrevImg_Click(object sender, RoutedEventArgs e)
+        {
+            _currentPage--;
+            this.hotelImages = this.hotelImages.Skip(_currentPage - 1).Take(1).ToList();
+            DataContext = this.hotelImages;
+
+            this.hotelImages = _hotel.HotelImages.ToList();
+        }
+
+        private void NextImg_Click(object sender, RoutedEventArgs e)
+        {
+            _currentPage++;
+            this.hotelImages = this.hotelImages.Skip(_currentPage - 1).Take(1).ToList();
+            DataContext = this.hotelImages;
+
+            this.hotelImages = _hotel.HotelImages.ToList();
         }
     }
 }

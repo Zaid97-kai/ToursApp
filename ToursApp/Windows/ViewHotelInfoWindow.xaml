@@ -8,9 +8,9 @@
         Title="ViewHotelInfoWindow" Height="300" Width="800">
     <Grid>
         <UniformGrid Rows="1" Columns="3">
-            <Button x:Name="PrevImg" Click="PrevImg_Click" Content="←" FontSize="80" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderBrush="White"></Button>
-            <Image x:Name="HotelImg" Source="{Binding ImageSource}"></Image>
-            <Button x:Name="NextImg" Click="NextImg_Click" Content="→" FontSize="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="White" Background="White"></Button>
+            <Button x:Name="PrevImg" Style="{StaticResource BigButton}" Click="PrevImg_Click" Content="←" FontSize="80" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderBrush="White"></Button>
+            <Image x:Name="HotelImg" Source="{Binding HotelImages.ImageSource}"></Image>
+            <Button x:Name="NextImg" Style="{StaticResource BigButton}" Click="NextImg_Click" Content="→" FontSize="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="White" Background="White"></Button>
         </UniformGrid>
     </Grid>
 </Window>

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,7 @@ namespace ToursApp.Windows
         private ToursDB_08Entities _context = new ToursDB_08Entities();
         private string _selectedCountryCode;
         private Country _selectedCountry;
+        private byte[] imageHotel;
 
         private HotelsWindow _hotelsWindow;
         public AddHotelWindow(HotelsWindow hotelsWindow)
@@ -51,7 +54,10 @@ namespace ToursApp.Windows
                 //Добавление отеля
                 if (Convert.ToInt32(TxtCountStars.Text) >= 0 && Convert.ToInt32(TxtCountStars.Text) <= 5) //Проверка количества звезд
                 {
-                    _context.Hotels.Add(new Hotel() { CountOfStars = Convert.ToInt32(TxtCountStars.Text), Name = TxtNameHotel.Text, CountryCode = _selectedCountryCode, Country = _selectedCountry, Description = TxtDescHotel.Text });
+                    Hotel hotel = new Hotel() { CountOfStars = Convert.ToInt32(TxtCountStars.Text), Name = TxtNameHotel.Text, CountryCode = _selectedCountryCode, Country = _selectedCountry, Description = TxtDescHotel.Text };
+                    hotel.HotelImages.Add(new HotelImage() { ImageSource = this.imageHotel, Hotel = hotel, HotelId = hotel.Id});
+                    _context.Hotels.Add(hotel);
+
                     _context.SaveChanges();
                 }
                 else
@@ -72,7 +78,17 @@ namespace ToursApp.Windows
 
         private void Overview_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string path;
+            if(openFileDialog.ShowDialog() == true)
+            {
+                path = openFileDialog.FileName;
+                this.imageHotel = System.IO.File.ReadAllBytes(path);
 
+                //BitmapSource bitmapSource = BitmapSource.Create(255, 255, 300, 300, PixelFormats.Indexed8, BitmapPalettes.Gray256, this.imageHotel, 2);
+
+                ImgHotel.Source = new BitmapImage(new Uri(path));
+            }
         }
     }
 }

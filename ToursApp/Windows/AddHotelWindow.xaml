@@ -28,9 +28,9 @@
             <TextBox Name="TxtCountStars"  Grid.Row="1" Grid.Column="1"/>
             <ComboBox DisplayMemberPath="Name" x:Name="CmbNameCountry" Grid.Row="2" Grid.Column="1"></ComboBox>
             <TextBox Name="TxtDescHotel"  Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" AcceptsReturn="True"/>
-            <Button x:Name="BtnAddHotel" Content="Добавить" Click="BtnAddHotel_Click" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"></Button>
+            <Button x:Name="BtnAddHotel" Content="Добавить" Click="BtnAddHotel_Click" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Background="White" BorderBrush="White"></Button>
             <Image x:Name="ImgHotel" Grid.Row="0" Grid.RowSpan="4" Grid.Column="2" Source="{Binding ImageSource, FallbackValue={StaticResource NullImage}}"></Image>
-            <Button x:Name="Overview" Content="Обзор" Click="Overview_Click" Grid.Column="2" Grid.Row="4"></Button>
+            <Button x:Name="Overview" Content="Обзор" Click="Overview_Click" Grid.Column="2" Grid.Row="4" BorderBrush="White" Background="White"></Button>
         </Grid>
     </Grid>
 </Window>

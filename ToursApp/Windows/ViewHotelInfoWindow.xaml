@@ -1,0 +1,16 @@
+﻿<Window x:Class="ToursApp.Windows.ViewHotelInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToursApp.Windows"
+        mc:Ignorable="d"
+        Title="ViewHotelInfoWindow" Height="300" Width="800">
+    <Grid>
+        <UniformGrid Rows="1" Columns="3">
+            <Button x:Name="PrevImg" Click="PrevImg_Click" Content="←" FontSize="80" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderBrush="White"></Button>
+            <Image x:Name="HotelImg" Source="{Binding ImageSource}"></Image>
+            <Button x:Name="NextImg" Click="NextImg_Click" Content="→" FontSize="80" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="White" Background="White"></Button>
+        </UniformGrid>
+    </Grid>
+</Window>

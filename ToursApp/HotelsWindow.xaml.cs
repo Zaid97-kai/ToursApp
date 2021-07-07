@@ -146,5 +146,12 @@ namespace ToursApp
                 RefreshHotels();
             }
         }
+
+        private void BtnViewHotelInfo_Click(object sender, RoutedEventArgs e)
+        {
+            Hotel hotel = (sender as Button).DataContext as Hotel;
+            ViewHotelInfoWindow viewHotelInfoWindow = new ViewHotelInfoWindow(hotel);
+            viewHotelInfoWindow.ShowDialog();
+        }
     }
 }

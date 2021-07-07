@@ -1,4 +1,5 @@
-﻿using Prism.Services.Dialogs;
+﻿using Microsoft.Win32;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace ToursApp.Windows
         private ToursDB_08Entities _context; //контекст данных
         private Hotel _hotel;
         private HotelsWindow _hotelsWindow;
+        private byte[] imageHotel;
         /// <summary>
         /// Конструктор класса окна изменения/удаления информации об отеле
         /// </summary>
@@ -91,6 +93,32 @@ namespace ToursApp.Windows
             _hotel.Name = TxtNameHotel.Text;
             _hotel.CountOfStars = Convert.ToInt32(TxtCountStars.Text);
             _hotel.Country = CmbNameCountry.SelectedItem as Country;
+        }
+
+        private void Overview_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string path;
+            if (openFileDialog.ShowDialog() == true)
+            {
+                path = openFileDialog.FileName;
+                this.imageHotel = System.IO.File.ReadAllBytes(path);
+
+                //BitmapSource bitmapSource = BitmapSource.Create(255, 255, 300, 300, PixelFormats.Indexed8, BitmapPalettes.Gray256, this.imageHotel, 2);
+
+                ImgHotel.Source = new BitmapImage(new Uri(path));
+            }
+
+            try
+            {
+                _hotel.HotelImages.Add(new HotelImage(){ Hotel = _hotel, HotelId = _hotel.Id, ImageSource = this.imageHotel });
+                _context.SaveChanges();
+                MessageBox.Show("Картинка успешно добавлена!");
+            }
+            catch
+            {
+                MessageBox.Show("Возникла ошибка");
+            }
         }
     }
 }

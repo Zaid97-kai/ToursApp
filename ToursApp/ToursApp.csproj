@@ -115,6 +115,9 @@
     <Compile Include="Windows\EditHotelInfoWindow.xaml.cs">
       <DependentUpon>EditHotelInfoWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ViewHotelInfoWindow.xaml.cs">
+      <DependentUpon>ViewHotelInfoWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="HotelsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\EditHotelInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ViewHotelInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

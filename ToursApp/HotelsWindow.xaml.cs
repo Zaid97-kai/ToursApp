@@ -20,14 +20,22 @@ namespace ToursApp
     /// </summary>
     public partial class HotelsWindow : Window
     {
-        private ToursDB_08Entities _context = new ToursDB_08Entities();
+        public static ToursDB_08Entities _context;
+        private Hotel _hotel;
         private int _currentPage = 1;
         private int _maxPage = 0;
-        public HotelsWindow()
+        public HotelsWindow(Hotel hotel = null)
         {
             InitializeComponent();
 
-            RefreshHotels(); 
+            _context = new ToursDB_08Entities();
+            if (hotel != null)
+            {
+                _hotel = hotel;
+                DataContext = _hotel;
+            }
+
+            RefreshHotels();
         }
         /// <summary>
         /// Обновление списка отелей при загрузке и пагинации
@@ -53,6 +61,7 @@ namespace ToursApp
             }
             catch
             {
+                MessageBox.Show("");
                 return false;
             }
         }
@@ -64,7 +73,7 @@ namespace ToursApp
         private void BtnEditHotelInfo_Click(object sender, RoutedEventArgs e)
         {
             EditHotelInfoWindow editHotelInfoWindow = new EditHotelInfoWindow(sender, _context, this);
-            editHotelInfoWindow.Show();
+            editHotelInfoWindow.ShowDialog();
         }
         /// <summary>
         /// Переход на последнюю страницу

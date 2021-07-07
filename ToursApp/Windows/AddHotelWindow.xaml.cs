@@ -20,8 +20,8 @@ namespace ToursApp.Windows
     public partial class AddHotelWindow : Window
     {
         private ToursDB_08Entities _context = new ToursDB_08Entities();
-        private string _selectedCountryCode = "";
-        private Country _selectedCountry = null;
+        private string _selectedCountryCode;
+        private Country _selectedCountry;
 
         private HotelsWindow _hotelsWindow;
         public AddHotelWindow(HotelsWindow hotelsWindow)
@@ -39,6 +39,7 @@ namespace ToursApp.Windows
         {
             if (TxtCountStars.Text != "" && TxtDescHotel.Text != "" && TxtNameHotel.Text != "" && CmbNameCountry.SelectedItem != null)
             {
+                //Поиск страны из раскрывающегося списка
                 foreach (Country i in _context.Countries)
                 {
                     if ((CmbNameCountry.SelectedItem as Country).Name == i.Name)
@@ -47,8 +48,8 @@ namespace ToursApp.Windows
                         _selectedCountry = i;
                     }
                 }
-
-                if (Convert.ToInt32(TxtCountStars.Text) >= 0 && Convert.ToInt32(TxtCountStars.Text) <= 5)
+                //Добавление отеля
+                if (Convert.ToInt32(TxtCountStars.Text) >= 0 && Convert.ToInt32(TxtCountStars.Text) <= 5) //Проверка количества звезд
                 {
                     _context.Hotels.Add(new Hotel() { CountOfStars = Convert.ToInt32(TxtCountStars.Text), Name = TxtNameHotel.Text, CountryCode = _selectedCountryCode, Country = _selectedCountry, Description = TxtDescHotel.Text });
                     _context.SaveChanges();
@@ -67,6 +68,11 @@ namespace ToursApp.Windows
             {
                 MessageBox.Show("Не все поля формы заполнены!");
             }
+        }
+
+        private void Overview_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

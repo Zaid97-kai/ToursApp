@@ -39,8 +39,8 @@ namespace ToursApp.Windows
             CmbNameCountry.ItemsSource = _context.Countries.ToList();
             _hotel = (o as Button).DataContext as Hotel;
 
+            DataContext = _hotel;
             InsertHotelInfo();
-            //DataContext = _hotel;
         }
 
         private void InsertHotelInfo()
@@ -75,9 +75,13 @@ namespace ToursApp.Windows
         {
             UpdateHotelProperty();
             _hotelsWindow.RefreshHotels();
-            //_context.SaveChanges();
+            _context.SaveChanges();
+
+            //HotelsWindow._context.SaveChanges();
+            //_hotelsWindow.RefreshHotels();
             //_hotelsWindow.DataGridHotels.ItemsSource = _context.Hotels.OrderBy(h => h.Name).ToList();
-            Hide();
+            //Hide();
+            this.Close();
         }
         /// <summary>
         /// Обновление информации об отеле

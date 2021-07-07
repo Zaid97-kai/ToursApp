@@ -88,8 +88,6 @@ namespace ToursApp.Windows
                 path = openFileDialog.FileName;
                 this.imageHotel = System.IO.File.ReadAllBytes(path);
 
-                //BitmapSource bitmapSource = BitmapSource.Create(255, 255, 300, 300, PixelFormats.Indexed8, BitmapPalettes.Gray256, this.imageHotel, 2);
-
                 ImgHotel.Source = new BitmapImage(new Uri(path));
             }
         }

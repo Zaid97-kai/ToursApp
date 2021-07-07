@@ -30,7 +30,7 @@
                 <Button x:Name="BtnDeleteHotel" Content="Удалить" Click="BtnDeleteHotel_Click" BorderBrush="White" Background="White"></Button>
                 <Button x:Name="BtnUpadateHotelInfo" Content="Применить изменение" Click="BtnUpadateHotelInfo_Click" Background="White" BorderBrush="White"></Button>
             </UniformGrid>
-            <Image x:Name="ImgHotel" Grid.Row="0" Grid.RowSpan="4" Grid.Column="2" Source="{Binding ImageSource, FallbackValue={StaticResource NullImage}}" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+            <Image x:Name="ImgHotel" Grid.Row="0" Grid.RowSpan="4" Grid.Column="2" Source="{Binding FallbackValue={StaticResource NullImage}}" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
             <Button x:Name="Overview" Content="Добавить картинку" Click="Overview_Click" Grid.Column="2" Grid.Row="3" BorderBrush="White" Background="White"></Button>
 
             <Border Grid.Row="4" Grid.ColumnSpan="3" BorderThickness="3" BorderBrush="Black">

@@ -164,9 +164,18 @@ namespace ToursApp
             ViewHotelInfoWindow viewHotelInfoWindow = new ViewHotelInfoWindow(hotel);
             viewHotelInfoWindow.ShowDialog();
         }
-
+        /// <summary>
+        /// Удаление нескольких отелей из списка при нажатии на Delete
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            if(e.Key == Key.Space)
+            {
+                AddHotelTourWindow addHotelTourWindow = new AddHotelTourWindow();
+                addHotelTourWindow.ShowDialog();
+            }
             if(e.Key == Key.Delete)
             {
                 var deletedHotels = DataGridHotels.SelectedItems.Cast<Hotel>().ToList();

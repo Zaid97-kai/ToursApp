@@ -52,14 +52,15 @@ namespace ToursApp.Windows
 
             InsertHotelInfo();
         }
-
+        /// <summary>
+        /// Заполнение информации об отеле
+        /// </summary>
         private void InsertHotelInfo()
         {
             TxtNameHotel.Text = _hotel.Name;
             TxtCountStars.Text = Convert.ToString(_hotel.CountOfStars);
             CmbNameCountry.SelectedItem = _hotel.Country;
         }
-
         /// <summary>
         /// Удаление отеля
         /// </summary>
@@ -131,6 +132,11 @@ namespace ToursApp.Windows
 
         private void PrevImg_Click(object sender, RoutedEventArgs e)
         {
+            if(_currentPage - 1 < 1)
+            {
+                return;
+            }
+
             _currentPage--;
             this.hotelImages = this.hotelImages.Skip(_currentPage - 1).Take(1).ToList();
             DataContext = this.hotelImages;
@@ -140,6 +146,10 @@ namespace ToursApp.Windows
 
         private void NextImg_Click(object sender, RoutedEventArgs e)
         {
+            if(_currentPage + 1 > _maxImages)
+            {
+                return;
+            }
             _currentPage++;
             this.hotelImages = this.hotelImages.Skip(_currentPage - 1).Take(1).ToList();
             DataContext = this.hotelImages;

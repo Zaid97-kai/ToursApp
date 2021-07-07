@@ -24,8 +24,15 @@ namespace ToursApp
         private Hotel _hotel;
         private int _currentPage = 1;
         private int _maxPage = 0;
+        /// <summary>
+        /// Конструктор класса окна с таблицей отелей
+        /// </summary>
+        /// <param name="hotel">Объект-отель</param>
         public HotelsWindow(Hotel hotel = null)
         {
+            this.RemoveHandler(KeyDownEvent, new KeyEventHandler(Window_KeyDown));
+            this.AddHandler(KeyDownEvent, new KeyEventHandler(Window_KeyDown), true);
+
             InitializeComponent();
 
             _context = new ToursDB_08Entities();
@@ -146,12 +153,45 @@ namespace ToursApp
                 RefreshHotels();
             }
         }
-
+        /// <summary>
+        /// Вывод окна с изображениями отеля
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnViewHotelInfo_Click(object sender, RoutedEventArgs e)
         {
             Hotel hotel = (sender as Button).DataContext as Hotel;
             ViewHotelInfoWindow viewHotelInfoWindow = new ViewHotelInfoWindow(hotel);
             viewHotelInfoWindow.ShowDialog();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Delete)
+            {
+                var deletedHotels = DataGridHotels.SelectedItems.Cast<Hotel>().ToList();
+                string deletedHotelsInfo = "";
+
+                foreach (var item in deletedHotels)
+                {
+                    deletedHotelsInfo += item.Name + ", ";
+                }
+
+                MessageBoxResult messageBoxResult = MessageBox.Show("Вы действительно хотите удалить " + deletedHotels, "", MessageBoxButton.OKCancel);
+
+                if (messageBoxResult == MessageBoxResult.OK)
+                {
+                    _context.Hotels.RemoveRange(deletedHotels);
+                    _context.SaveChanges();
+                }
+                else if(messageBoxResult == MessageBoxResult.Cancel)
+                {
+                    return;
+                }
+
+                RefreshHotels();
+                e.Handled = true;
+            }
         }
     }
 }

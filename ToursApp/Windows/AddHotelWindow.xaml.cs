@@ -55,7 +55,10 @@ namespace ToursApp.Windows
                 if (Convert.ToInt32(TxtCountStars.Text) >= 0 && Convert.ToInt32(TxtCountStars.Text) <= 5) //Проверка количества звезд
                 {
                     Hotel hotel = new Hotel() { CountOfStars = Convert.ToInt32(TxtCountStars.Text), Name = TxtNameHotel.Text, CountryCode = _selectedCountryCode, Country = _selectedCountry, Description = TxtDescHotel.Text };
-                    hotel.HotelImages.Add(new HotelImage() { ImageSource = this.imageHotel, Hotel = hotel, HotelId = hotel.Id});
+                    if (this.imageHotel != null)
+                    {
+                        hotel.HotelImages.Add(new HotelImage() { ImageSource = this.imageHotel, Hotel = hotel, HotelId = hotel.Id });
+                    }
                     _context.Hotels.Add(hotel);
 
                     _context.SaveChanges();
